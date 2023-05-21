@@ -1,0 +1,5 @@
+disnake==2.8.1
+disnake.py==0.0.0
+python-dotenv==1.0.0
+yarl==1.9.1
+
