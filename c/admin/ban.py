@@ -1,10 +1,6 @@
 import disnake
-import os
 from disnake.ui import Button, View
 from disnake.ext import commands
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class AdminCommands(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -13,10 +9,8 @@ class AdminCommands(commands.Cog):
     @commands.slash_command(description='| Moderação | O nome é bem auto explicativo.')
     @commands.has_permissions(ban_members=True)
     async def ban(inter, user: disnake.Member, reason = "Não especificado."):
-        
-        clientId=os.getenv('APP_ID')
-        
-        if user == inter.author or user.id == clientId:
+
+        if user == inter.author or user.id == inter.bot.application_id:
             await inter.response.send_message('Não foi possivel banir esse user!', ephemeral=True)
 
 
